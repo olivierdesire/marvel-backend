@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const cors = require("cors");
-
-app.use(cors());
 
 router.get("/characters", async (req, res) => {
   try {
