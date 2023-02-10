@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 
+const cors = require("cors");
+
+app.use(cors());
+
 router.get("/comics", async (req, res) => {
   try {
     const comics = await axios.get(
