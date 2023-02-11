@@ -5,6 +5,14 @@ const app = express();
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+  try {
+    return res.status(200).json("Bienvenue sur notre serveur Marvel");
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+});
+
 const comicsRoutes = require("./routes/comics");
 app.use(comicsRoutes);
 
