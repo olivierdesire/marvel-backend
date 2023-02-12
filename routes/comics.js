@@ -3,9 +3,17 @@ const router = express.Router();
 const axios = require("axios");
 
 router.get("/comics", async (req, res) => {
+  let filters = "";
+  if (req.query.title) {
+    filters = filters + "&title=" + req.query.title;
+  }
+  if (req.query.skip) {
+    filters = filters + "&skip=" + req.query.skip;
+  }
   try {
     const comics = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.APIKEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.APIKEY}` +
+        filters
     );
     return res.status(200).json(comics.data);
   } catch (error) {
