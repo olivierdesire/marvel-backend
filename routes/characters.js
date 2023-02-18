@@ -11,7 +11,6 @@ router.get("/characters", async (req, res) => {
     if (req.query.skip) {
       filters = filters + "&skip=" + req.query.skip;
     }
-    console.log(filters);
     const characters = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.APIKEY}` +
         filters
